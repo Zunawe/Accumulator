@@ -1,11 +1,11 @@
-import { SET_CONTACTS } from '../actions/contact'
+import { SET_ITEMS } from '../actions/items'
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case SET_CONTACTS:
+    case SET_ITEMS:
       return {
         ...state,
-        contacts: action.payload
+        items: action.payload
       }
     default:
       return state

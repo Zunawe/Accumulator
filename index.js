@@ -1,3 +1,2 @@
-const server = require('./server/index')
-
-server.boot()
+require('dotenv').config()
+require('./server/index').boot()

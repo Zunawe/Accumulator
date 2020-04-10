@@ -1,14 +1,14 @@
 import React, { createContext, useReducer } from 'react'
 
-import reducer from '../reducers/contact'
+import reducer from '../reducers/items'
 
 const initialState = {
-  contacts: []
+  items: []
 }
 
-export const ContactContext = createContext()
+export const ItemsContext = createContext()
 
-export const ContactContextProvider = (props) => {
+export const ItemsContextProvider = (props) => {
   const { children } = props
 
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -21,8 +21,8 @@ export const ContactContextProvider = (props) => {
   }
 
   return (
-    <ContactContext.Provider value={[state, combinedDispatch]}>
+    <ItemsContext.Provider value={[state, combinedDispatch]}>
       {children}
-    </ContactContext.Provider>
+    </ItemsContext.Provider>
   )
 }

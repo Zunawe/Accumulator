@@ -1,3 +1,6 @@
 data/
 .build/
 node_modules/
+logs/
+
+.env

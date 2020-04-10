@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './App'
-import { ContactContextProvider } from './context/contact'
+import ContextProvider from './context'
 
 ReactDOM.render(
-  <ContactContextProvider>
+  <ContextProvider>
     <App />
-  </ContactContextProvider>,
+  </ContextProvider>,
   document.getElementById('root')
 )

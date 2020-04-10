@@ -1,0 +1,55 @@
+{
+	"_id": "",
+	"name": "",
+	"fieldLayout": [0, 1, 2, 3, 4, 5, 6],
+	"fields": {
+		"0": {
+			"id": "0",
+			"type": "TEXT",
+			"label": "Just plain text"
+		},
+		"1": {
+			"id": "1",
+			"type": "TEXTAREA",
+			"label": "Just plain text but there's more space"
+		},
+		"2": {
+			"id": "2",
+			"type": "SELECT",
+			"label": "A dropdown selection",
+			"options": [
+				"item1",
+				"item2"
+			]
+		},
+		"3": {
+			"id": "3",
+			"type": "SWITCH",
+			"label": "Just an on/off"
+		},
+		"4": {
+			"id": "4",
+			"type": "CHECKBOX",
+			"label": "A number of on/offs",
+			"options": [
+				"item1",
+				"item2"
+			]
+		},
+		"5": {
+			"id": "5",
+			"type": "RADIO",
+			"label": "Basically a reskinned select",
+			"options": [
+				"item1",
+				"item2"
+			]
+		},
+		"6": {
+			"id": "6",
+			"type": "DATE",
+			"label": "Possibly provide a date picker",
+			"format": "YYYY-MM-DD"
+		}
+	}
+}
