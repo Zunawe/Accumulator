@@ -32,6 +32,8 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "scripts": {
+    "setup": "npm ci && npm run build",
+    "clean": "rm -rf node_modules .build logs",
     "start": "node index.js",
     "mongo": "mkdir -p logs && mongod --dbpath ./data --logpath ./logs/mongo.log",
     "mongo-start": "mkdir -p logs && mongod --dbpath ./data --logpath ./logs/mongo.log --fork",
