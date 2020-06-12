@@ -7,36 +7,33 @@ const { logger } = require('./util')
 const indexRouter = require('./routes/index')
 const collectionRouter = require('./routes/collection')
 
-const boot = () => {
-  const PORT = process.env.PORT || 8000
-  const app = express()
+const PORT = process.env.PORT || 8000
+const app = express()
 
-  app.use(express.json())
-  app.use(express.static(path.join(__dirname, '..', '.build')))
+app.use(express.json())
+app.use(express.static(path.join(__dirname, '..', '.build')))
 
-  app.use(httpLogger)
+app.use(httpLogger)
 
-  app.use('/', indexRouter)
-  app.use('/api/collection', collectionRouter)
+app.use('/', indexRouter)
+app.use('/api/collection', collectionRouter)
 
-  app.use(errorLogger)
+app.use(errorLogger)
 
-  const server = app.listen(PORT, () => {
-    logger.info(`App running on port ${PORT}`)
-  })
+const server = app.listen(PORT, () => {
+  logger.info(`App running on port ${PORT}`)
+})
 
-  mongoose.connect('mongodb://localhost/accumulator', {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-  }).catch((err) => {
-    logger.error(err.stack)
-    server.close()
-  })
-  mongoose.connection.once('open', () => logger.info('Connected to database'))
-}
+mongoose.connect('mongodb://localhost/accumulator', {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+}).catch((err) => {
+  logger.error(err.stack)
+  server.close()
+})
+const db = mongoose.connection
+db.once('open', () => logger.info('Connected to database'))
 
-module.exports = {
-  boot
-}
+module.exports = app
