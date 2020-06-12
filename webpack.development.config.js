@@ -10,7 +10,6 @@ module.exports = {
     publicPath: path.resolve(__dirname, '.build')
   },
   mode: 'development',
-  watch: true,
   devtool: 'eval-source-map',
   module: {
     rules: [

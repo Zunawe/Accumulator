@@ -10,9 +10,10 @@ const collectionRouter = require('./routes/collection')
 const PORT = process.env.PORT || 8000
 const app = express()
 
+// Hot module replacement setup
 if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack')
-  const webpackConfig = require('../webpack.config')
+  const webpackConfig = require('../webpack.development.config')
 
   const compiler = webpack(webpackConfig)
 
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('webpack-hot-middleware')(compiler))
 }
 
+// Middlewares
 app.use(express.json())
 app.use(express.static(path.join(__dirname, '..', '.build')))
 
@@ -34,10 +36,12 @@ app.use('/api/collection', collectionRouter)
 
 app.use(errorLogger)
 
+// Starting the server
 const server = app.listen(PORT, () => {
   logger.info(`App running on port ${PORT}`)
 })
 
+// Connect to the database
 mongoose.connect('mongodb://localhost/accumulator', {
   useCreateIndex: true,
   useNewUrlParser: true,

@@ -36,7 +36,8 @@
     "mongo": "mkdir -p logs && mongod --dbpath ./data --logpath ./logs/mongo.log",
     "mongo-start": "mkdir -p logs && mongod --dbpath ./data --logpath ./logs/mongo.log --fork",
     "mongo-stop": "pgrep mongo | xargs kill -2",
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack --config webpack.development.config.js",
+    "build:dist": "webpack --config webpack.production.config.js",
     "lint": "standard --fix \"client/js/**/*.js\" \"server/**/*.js\""
   },
   "keywords": [],
