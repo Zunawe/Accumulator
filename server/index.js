@@ -10,6 +10,20 @@ const collectionRouter = require('./routes/collection')
 const PORT = process.env.PORT || 8000
 const app = express()
 
+if (process.env.NODE_ENV === 'development') {
+  const webpack = require('webpack')
+  const webpackConfig = require('../webpack.config')
+
+  const compiler = webpack(webpackConfig)
+
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+    stats: false
+  }))
+  app.use(require('webpack-hot-middleware')(compiler))
+}
+
 app.use(express.json())
 app.use(express.static(path.join(__dirname, '..', '.build')))
 

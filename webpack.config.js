@@ -1,11 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
-  entry: ['./client/js/index.js', './client/css/app.less'],
+  entry: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true', './client/js/index.js', './client/css/app.less'],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '.build')
+    path: path.resolve(__dirname, '.build'),
+    publicPath: path.resolve(__dirname, '.build')
   },
   mode: 'development',
   watch: true,
@@ -45,6 +47,8 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       template: 'client/public/index.html'
     })
