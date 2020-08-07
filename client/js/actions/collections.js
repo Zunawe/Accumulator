@@ -7,8 +7,9 @@ export const setCollections = (collections) => ({
 })
 
 export const addCollection = (collection) => {
-  return (dispatch) => {
-    axios.post('http://localhost:8000/api/collection', collection)
+  return async (dispatch) => {
+    const response = await axios.post('http://localhost:8000/api/collection', collection)
+    dispatch(getCollections())
   }
 }
 
